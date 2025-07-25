@@ -24,7 +24,7 @@ class WasteInput(BaseModel):
     number_of_facilities: float = Field(..., gt=0)
     general_waste: float = Field(..., ge=0)
     hazardous_waste: float = Field(..., ge=0)
-    province_features: list[float] = Field(..., min_items=8, max_items=8)  # Assuming 8 encoded provinces
+    province_features: list[float] = Field(..., min_items=10, max_items=10)  # 11 unique provinces - 1 (drop_first) = 10 features
 
 @app.post("/predict")
 def predict_waste(data: WasteInput):
