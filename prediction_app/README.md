@@ -1,6 +1,11 @@
-# Waste Prediction App
+# SA Waste Linear Regression - Waste Prediction App
 
-A beautiful Flutter mobile application that predicts waste tonnage for South African provinces using machine learning. The app integrates with a FastAPI backend to provide accurate predictions based on facility data.
+## Mission & Problem Statement
+
+This project addresses the critical need for accurate waste management predictions in South Africa through data-driven insights. 
+The application leverages machine learning to predict waste tonnage across South African provinces, enabling better resource allocation and waste management strategies.
+By providing reliable waste generation forecasts, it supports sustainable waste reduction, reuse, recycling, and recovery activities.
+The solution bridges the gap between waste data and actionable insights for environmental sustainability.
 
 ## Features
 
@@ -13,40 +18,97 @@ A beautiful Flutter mobile application that predicts waste tonnage for South Afr
 
 ## API Integration
 
-The app connects to a FastAPI backend hosted at:
-- **Endpoint**: `https://sa-waste-linearregression.onrender.com/predict`
+The app connects to a publicly available FastAPI backend:
+
+### Public API Endpoint
+- **Base URL**: `https://sa-waste-linearregression.onrender.com`
+- **Prediction Endpoint**: `https://sa-waste-linearregression.onrender.com/predict`
+- **Swagger UI Documentation**: `https://sa-waste-linearregression.onrender.com/docs`
 - **Method**: POST
-- **Input Parameters**:
-  - `number_of_facilities` (float, >0)
-  - `general_waste` (float, >=0) 
-  - `hazardous_waste` (float, >=0)
-  - `province_features` (array of 10 floats for one-hot encoding)
+- **Content-Type**: application/json
+
+### Input Parameters
+```json
+{
+  "number_of_facilities": 10,
+  "general_waste": 500,
+  "hazardous_waste": 50,
+  "province_features": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+}
+```
+
+### Response Format
+```json
+{
+  "predicted_total_waste_tonnage": 1250.75
+}
+```
+
+**Test the API**: Visit the Swagger UI at `https://sa-waste-linearregression.onrender.com/docs` to interact with the API directly.
+
+## Video Demo
+
+🎥 **YouTube Demo**: [Watch the 5-minute app demo](https://youtu.be/YOUR_VIDEO_ID_HERE)
+
+*Note: Replace YOUR_VIDEO_ID_HERE with your actual YouTube video ID*
 
 ## Supported Provinces
 
 - Eastern Cape, Free State, Gauteng, KwaZulu-Natal, Limpopo
 - Mpumalanga, North West, Northern Cape, Western Cape
 
-## Getting Started
+## How to Run the Mobile App
 
 ### Prerequisites
+- **Flutter SDK**: Version 3.8.1 or higher ([Install Flutter](https://docs.flutter.dev/get-started/install))
+- **Dart SDK**: Included with Flutter
+- **IDE**: Android Studio, VS Code, or IntelliJ IDEA with Flutter plugins
+- **Device**: Android/iOS device or emulator
 
-- Flutter SDK (>=3.8.1)
-- Dart SDK
-- Android Studio / VS Code
-- Android/iOS device or emulator
+### Step-by-Step Installation
 
-### Installation
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/SA_Waste_LinearRegression.git
+   cd SA_Waste_LinearRegression/prediction_app
+   ```
 
-1. Install dependencies:
+2. **Install Flutter dependencies**:
    ```bash
    flutter pub get
    ```
 
-2. Run the app:
+3. **Verify Flutter installation**:
+   ```bash
+   flutter doctor
+   ```
+   Fix any issues reported by Flutter Doctor.
+
+4. **Connect your device or start an emulator**:
+   - **Android**: Connect via USB with Developer Options enabled, or start Android emulator
+   - **iOS**: Connect iPhone/iPad or start iOS Simulator (macOS only)
+
+5. **Run the application**:
    ```bash
    flutter run
    ```
+   
+   Or for specific platforms:
+   ```bash
+   flutter run -d android    # For Android
+   flutter run -d ios        # For iOS
+   ```
+
+6. **Build for release** (optional):
+   ```bash
+   flutter build apk         # Android APK
+   flutter build ios         # iOS (macOS only)
+   ```
+
+### Troubleshooting
+- Ensure your device has **Developer Options** and **USB Debugging** enabled (Android)
+- For iOS, ensure you have **Xcode** installed and device is trusted
+- Run `flutter clean` followed by `flutter pub get` if you encounter dependency issues
 
 ## Dependencies
 
