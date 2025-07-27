@@ -50,7 +50,6 @@ The app connects to a publicly available FastAPI backend:
 
 🎥 ** Demo**: [Watch the 5-minute app demo](https://share.vidyard.com/watch/qvNWP8zkz1ehzQuHxyfS9p)
 
-*Note: Replace YOUR_VIDEO_ID_HERE with your actual YouTube video ID*
 
 ## Supported Provinces
 
